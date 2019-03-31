@@ -26,10 +26,15 @@
     var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
     var wins = 0;
     var losses = 0;
+    var guessleft = 9;
+    var GSF = 0;
+    
     var index;
     var guessText = document.getElementById("Guess-text");
     var userWinsText = document.getElementById("User-wins");
     var userLossesText = document.getElementById("User-losses"); 
+    var guessesLeftText = document.getElementById("Guesses-left");
+    var GSFT = document.getElementById("Guesses-so-far");
     document.onkeyup = function(event){
         var userGuess= event.key;
         var computerGuess= computerChoices[Math.floor(Math.random() * computerChoices.length)];
@@ -38,14 +43,25 @@
 
     if (userGuess == computerGuess){
         wins++;
+        guessleft = 9;
+        guessesSoFar++;
+    }
+    else if(guessleft <= 1){
+        GSF = 0;
+        losses++;
+        guessleft = 9;
     }
     else{
-        losses++;
+        guessleft--;
+        GSF++;
     }
     console.log(wins);
     console.log(losses);
     userWinsText.textContent = "wins: " + wins;
     userLossesText.textContent = "losses: " + losses;
+    guessesLeftText.textContent = "Guesses Left: " + guessleft;
+    GSFT.textContent = "Guesses So Far: " + guessSoFar;
+
     
 
 };
