@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <!-- <link rel="stylesheet" href="reset.css"> -->
+
+    <title>Psychic Game</title>
+</head>
+<body>
+    <header>
+        Psychic Game
+    </header>
+    <div id="Psychic">
+        <p id="Guess-text">Guess what letter I'm thinking of!</p>
+        <p id="User-wins">wins: </p>
+        <p id="User-losses">losses: </p>
+        <p id="Guesses-left">Guesses left: </p>
+        <p id="Guesses-so-far">Guesses so far: </p>
+    </div>
+    
+    <script>
+    var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+    var wins = 0;
+    var losses = 0;
+    var index;
+    var guessText = document.getElementById("Guess-text");
+    var userWinsText = document.getElementById("User-wins");
+    var userLossesText = document.getElementById("User-losses"); 
+    document.onkeyup = function(event){
+        var userGuess= event.key;
+        var computerGuess= computerChoices[Math.floor(Math.random() * computerChoices.length)];
+        console.log (userGuess);
+        console.log (computerGuess);
+
+    if (userGuess == computerGuess){
+        wins++;
+    }
+    else{
+        losses++;
+    }
+    console.log(wins);
+    console.log(losses);
+    userWinsText.textContent = "wins: " + wins;
+    userLossesText.textContent = "losses: " + losses;
+    
+
+};
+
+    
+    </script>
+</body>
+
+</html>
